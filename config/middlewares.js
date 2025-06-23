@@ -1,6 +1,4 @@
-module.exports = ({
-  env
-}) => [
+module.exports = ({ env }) => [
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -8,9 +6,9 @@ module.exports = ({
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:', 'https://frontend-inmobiliaria.vercel.app'],
           'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net', 'api.mapbox.com'],
-          'img-src': ["'self'", 'data:', 'blob:' ],
+          'img-src': ["'self'", 'data:', 'blob:'],
           'media-src': ["'self'", 'data:', 'blob:'],
           'worker-src': ['blob:'],
           upgradeInsecureRequests: null,
@@ -18,7 +16,15 @@ module.exports = ({
       }
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['https://frontend-inmobiliaria.vercel.app'], // <- importante
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      headers: ['Content-Type', 'Authorization'],
+      credentials: true,
+    },
+  },
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
@@ -27,3 +33,4 @@ module.exports = ({
   'strapi::favicon',
   'strapi::public',
 ];
+
