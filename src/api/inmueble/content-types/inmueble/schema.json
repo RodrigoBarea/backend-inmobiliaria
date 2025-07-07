@@ -54,17 +54,17 @@
     "tipo": {
       "type": "enumeration",
       "enum": [
-        "Casa Residencial",
+        "Lote",
+        "Casa",
         "Departamento",
-        "Monoambiente",
-        "Casa en Condominio",
-        "Quinta",
-        "Local Comercial",
-        "Oficina"
+        "Terreno",
+        "Tienda Comercial"
       ]
     },
     "precio": {
-      "type": "decimal"
+      "type": "decimal",
+      "precision": 14,
+      "scale": 2
     },
     "ubicacion": {
       "type": "customField",
@@ -87,6 +87,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::agente.agente"
+    },
+    "ciudad": {
+      "type": "enumeration",
+      "enum": [
+        "Tarija",
+        "Santa Cruz",
+        "La Paz",
+        "Cochabamba",
+        "Bermejo",
+        "Yacuiba"
+      ]
     }
   }
 }

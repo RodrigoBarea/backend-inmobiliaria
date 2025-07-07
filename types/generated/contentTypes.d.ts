@@ -905,15 +905,7 @@ export interface ApiInmuebleInmueble extends Schema.CollectionType {
     estacionamientos: Attribute.Integer;
     descripcion: Attribute.Blocks;
     tipo: Attribute.Enumeration<
-      [
-        'Casa Residencial',
-        'Departamento',
-        'Monoambiente',
-        'Casa en Condominio',
-        'Quinta',
-        'Local Comercial',
-        'Oficina'
-      ]
+      ['Lote', 'Casa', 'Departamento', 'Terreno', 'Tienda Comercial']
     >;
     precio: Attribute.Decimal;
     ubicacion: Attribute.JSON & Attribute.CustomField<'plugin::map-field.map'>;
@@ -928,6 +920,9 @@ export interface ApiInmuebleInmueble extends Schema.CollectionType {
       'api::inmueble.inmueble',
       'oneToOne',
       'api::agente.agente'
+    >;
+    ciudad: Attribute.Enumeration<
+      ['Tarija', 'Santa Cruz', 'La Paz', 'Cochabamba', 'Bermejo', 'Yacuiba']
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
